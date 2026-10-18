@@ -1,0 +1,25 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ai-website-and-motion",
+  "description": "Lars de Bruin's toolkit for premium, animated websites with Claude: Magic UI, React Bits, GSAP and Lenis.",
+  "owner": {
+    "name": "Lars de Bruin"
+  },
+  "plugins": [
+    {
+      "name": "website-motion",
+      "description": "Magic UI + shadcn (React Bits) MCP servers and a skill that builds and upgrades websites with GSAP, Lenis, React Bits and Magic UI, restyled to the brand.",
+      "source": "./plugins/website-motion",
+      "category": "design"
+    },
+    {
+      "name": "gsap-skills",
+      "description": "Official GSAP skills from GreenSock: core, timelines, ScrollTrigger, plugins, React, performance.",
+      "source": {
+        "source": "github",
+        "repo": "greensock/gsap-skills"
+      },
+      "category": "design"
+    }
+  ]
+}

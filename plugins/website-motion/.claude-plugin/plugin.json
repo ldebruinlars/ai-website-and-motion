@@ -1,0 +1,10 @@
+{
+  "name": "website-motion",
+  "version": "1.0.0",
+  "description": "Build and upgrade websites that feel premium: GSAP scroll effects, Lenis smooth scroll, React Bits and Magic UI components, restyled to the brand.",
+  "author": {
+    "name": "Lars de Bruin"
+  },
+  "repository": "https://github.com/ldebruinlars/ai-website-and-motion",
+  "keywords": ["gsap", "lenis", "react-bits", "magic-ui", "shadcn", "animation", "landing-page"]
+}
