@@ -6,7 +6,12 @@ command -v claude >/dev/null || { echo 'Claude Code (claude) is not on PATH.'; e
 command -v node >/dev/null || { echo 'Node.js is required for the MCP servers.'; exit 1; }
 
 claude plugin marketplace add ldebruinlars/ai-website-and-motion
-for p in website-motion gsap-skills impeccable 21st humanizer claude-code-setup; do claude plugin install "$p@ai-website-and-motion" --scope user; done
+for p in website-motion gsap-skills impeccable 21st humanizer claude-code-setup agent-skills context7; do claude plugin install "$p@ai-website-and-motion" --scope user; done
+
+# Graphify ships as a Python CLI that installs its own skill.
+if command -v uv >/dev/null; then uv tool install graphifyy && graphify install || true
+elif command -v pipx >/dev/null; then pipx install graphifyy && graphify install || true
+else echo 'uv or pipx not found: skipping Graphify (pipx install graphifyy && graphify install).'; fi
 
 # Give MCP servers enough time to start (shadcn can take ~20 s on first run).
 node -e "const fs=require('fs');const p=process.argv[1];let s={};try{s=JSON.parse(fs.readFileSync(p,'utf8'))}catch{};s.env=s.env||{};if(!s.env.MCP_TIMEOUT||+s.env.MCP_TIMEOUT<120000){s.env.MCP_TIMEOUT='120000'};fs.writeFileSync(p,JSON.stringify(s,null,2)+'\n')" "$HOME/.claude/settings.json"

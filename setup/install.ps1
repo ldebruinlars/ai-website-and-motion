@@ -5,7 +5,16 @@ if (-not (Get-Command claude -ErrorAction SilentlyContinue)) { throw 'Claude Cod
 if (-not (Get-Command node -ErrorAction SilentlyContinue)) { throw 'Node.js is required for the MCP servers.' }
 
 claude plugin marketplace add ldebruinlars/ai-website-and-motion
-foreach ($p in 'website-motion','gsap-skills','impeccable','21st','humanizer','claude-code-setup') { claude plugin install "$p@ai-website-and-motion" --scope user }
+foreach ($p in 'website-motion','gsap-skills','impeccable','21st','humanizer','claude-code-setup','agent-skills','context7') { claude plugin install "$p@ai-website-and-motion" --scope user }
+
+# Graphify ships as a Python CLI that installs its own skill.
+if (Get-Command py -ErrorAction SilentlyContinue) {
+  py -3 -m pip install --user -q --use-feature=truststore graphifyy
+  $scripts = py -3 -c "import site,os;print(os.path.join(os.path.dirname(site.getusersitepackages()),'Scripts'))"
+  $userPath = [Environment]::GetEnvironmentVariable('Path','User')
+  if ($userPath -notlike "*$scripts*") { [Environment]::SetEnvironmentVariable('Path', "$userPath;$scripts", 'User') }
+  & (Join-Path $scripts 'graphify.exe') install
+} else { Write-Host 'Python 3.10+ not found: skipping Graphify (pip install graphifyy && graphify install).' }
 
 # Give MCP servers enough time to start (shadcn can take ~20 s on first run).
 $settings = Join-Path $HOME '.claude\settings.json'
