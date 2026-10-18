@@ -79,6 +79,41 @@
         "path": "external_plugins/context7"
       },
       "category": "development"
+    },
+    {
+      "name": "taste-skill",
+      "description": "Leonxlnx Taste Skill v2: art direction for coding agents, a library of researched design directions, real pictures and a real-browser inspector, plus redesign, brand kit and image-to-code skills.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/Leonxlnx/taste-skill.git"
+      },
+      "category": "design",
+      "homepage": "https://github.com/Leonxlnx/taste-skill"
+    },
+    {
+      "name": "emil-kowalski",
+      "description": "Emil Kowalski (Vercel, Linear) design-engineering skills for the web: animation craft, reviews, performance, Apple design principles, UI library picks, prototyping and break-the-UI testing.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/emilkowalski/skills.git"
+      },
+      "strict": false,
+      "category": "design",
+      "homepage": "https://emilkowal.ski/skill",
+      "skills": [
+        "./skills/emil-design-eng",
+        "./skills/animate",
+        "./skills/review-animations",
+        "./skills/improve-animations",
+        "./skills/find-animation-opportunities",
+        "./skills/animation-performance",
+        "./skills/animation-vocabulary",
+        "./skills/apple-design",
+        "./skills/pick-ui-library",
+        "./skills/prototype",
+        "./skills/mobile-native",
+        "./skills/break-ui"
+      ]
     }
   ]
 }
