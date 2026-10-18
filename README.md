@@ -12,13 +12,15 @@ My Claude toolkit so Claude stops producing generic "AI slop": premium design, r
 | **claude-code-setup** | Official Anthropic plugin: scans a codebase and recommends the hooks, skills, MCP servers and subagents it needs. | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup) |
 | **agent-skills** | Addy Osmani's production-grade engineering skills for the whole dev cycle (spec, plan, build, test, review, ship), with commands like `/spec`, `/plan`, `/review`, `/ship`. | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) |
 | **context7** | Upstash Context7: up-to-date, version-specific library docs, so Claude never codes against outdated APIs. No key needed. | [claude-plugins-official](https://github.com/anthropics/claude-plugins-official/tree/main/external_plugins/context7) |
+| **taste-skill** | Leonxlnx Taste Skill v2: art direction, a library of researched design directions with real pictures, a real-browser inspector, plus redesign, brand kit and image-to-code skills. Needs Node 22+ and Chrome or Edge. | [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill) |
+| **emil-kowalski** | Emil Kowalski (Vercel, Linear): 12 web design-engineering skills for animation craft, animation reviews and performance, Apple design principles, picking UI libraries, prototyping and break-the-UI testing. The Swift, Expo and Sonner skills are left out. | [emilkowalski/skills](https://github.com/emilkowalski/skills) |
 | **Graphify** *(Python CLI, not a plugin)* | Turns a codebase into a knowledge graph so Claude doesn't re-read everything. `/graphify .` | [Graphify-Labs/graphify](https://github.com/Graphify-Labs/graphify) |
 
 The third-party plugins are pulled straight from their authors' repos, so updates arrive automatically. The libraries themselves (GSAP, Lenis, React Bits, Magic UI) are installed **per website project** by Claude when it needs them.
 
 ## Install in Claude Code (any computer)
 
-Run the setup script, which installs all eight plugins and Graphify, and sets the MCP startup timeout:
+Run the setup script, which installs all ten plugins and Graphify, and sets the MCP startup timeout:
 
 ```powershell
 # Windows (PowerShell)
@@ -42,6 +44,8 @@ Or by hand inside Claude Code:
 /plugin install claude-code-setup@ai-website-and-motion
 /plugin install agent-skills@ai-website-and-motion
 /plugin install context7@ai-website-and-motion
+/plugin install taste-skill@ai-website-and-motion
+/plugin install emil-kowalski@ai-website-and-motion
 ```
 
 Graphify: `pip install graphifyy && graphify install` (Python 3.10+).

@@ -10,6 +10,8 @@ This repo is Lars de Bruin's Claude Code plugin marketplace. It also carries a c
 - **Up-to-date library docs:** `context7` MCP server. Use it before writing code against any library API you aren't sure about.
 - **Engineering workflow:** Addy Osmani's agent skills (spec, plan, build, test, review, ship) and the commands `/spec`, `/plan`, `/build`, `/test`, `/review`, `/code-simplify`, `/ship`, `/webperf`, `/constraints`.
 - **Codebase map:** `graphify` skill (`/graphify .`). In cloud sessions a SessionStart hook installs the CLI.
+- **Art direction:** Taste Skill (`taste-skill` plus style variants such as minimalist, brutalist and soft, `redesign-skill`, `brandkit`, `image-to-code-skill`). Use it to pick a direction before building; it can open a real browser to inspect the result.
+- **Animation craft:** Emil Kowalski's skills: `emil-design-eng` first, then `animate`, `review-animations`, `improve-animations`, `animation-performance`, `find-animation-opportunities`, `apple-design`, `pick-ui-library`, `prototype`, `mobile-native` and `break-ui`. He recommends using them case by case rather than always on.
 - **Writing:** `humanizer` skill for any copy that people will read.
 - **Project setup:** `claude-automation-recommender` (from claude-code-setup) to suggest hooks, skills and MCP servers for a codebase.
 

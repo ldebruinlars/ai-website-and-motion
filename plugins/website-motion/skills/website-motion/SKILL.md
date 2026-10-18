@@ -23,6 +23,7 @@ Companion plugins from the same marketplace, use them when installed:
 
 ## Workflow
 
+0. **Start from references.** Before designing a section, look at the galleries and prompt template in `references/inspiration.md` and work from 3 to 6 real references, not a blank prompt.
 1. **Read the project first.** Framework (Next.js, Vite, Astro, plain HTML), Tailwind version, TypeScript or JS, existing `components.json`, and where the brand lives (Tailwind theme, CSS variables, logo, fonts). If there is no project, scaffold Next.js + TypeScript + Tailwind (`npx create-next-app@latest`) unless the user wants something else.
 2. **Capture the brand.** Primary/secondary/accent colours, background, fonts, tone (calm, bold, playful, luxury). If they aren't in the code, ask once, or pull them from the user's live site. Put them in CSS variables / the Tailwind theme so every component reads from one place.
 3. **Pick the moments, not everything.** Plan per section which single effect earns its place. A premium page usually has: one striking hero (animated headline or background), section reveals on scroll, one marquee (logos or testimonials), one interactive card grid, and polished buttons. See `references/motion-recipes.md` for proven combinations.

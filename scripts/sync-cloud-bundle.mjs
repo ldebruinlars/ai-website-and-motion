@@ -14,6 +14,9 @@ const SOURCES = [
   { name: 'agent-skills', repo: 'https://github.com/addyosmani/agent-skills.git', root: '.', license: 'MIT' },
   { name: 'claude-code-setup', repo: 'https://github.com/anthropics/claude-plugins-official.git', root: 'plugins/claude-code-setup', license: 'Apache-2.0' },
   { name: '21st', repo: 'https://github.com/21st-dev/magic-mcp.git', root: '.', license: 'ISC' },
+  { name: 'taste-skill', repo: 'https://github.com/Leonxlnx/taste-skill.git', root: '.', license: 'MIT' },
+  // Alleen de webskills; Swift, Expo en Sonner laten we weg (zelfde selectie als in marketplace.json).
+  { name: 'emil-kowalski', repo: 'https://github.com/emilkowalski/skills.git', root: '.', license: 'MIT', only: ['emil-design-eng', 'animate', 'review-animations', 'improve-animations', 'find-animation-opportunities', 'animation-performance', 'animation-vocabulary', 'apple-design', 'pick-ui-library', 'prototype', 'mobile-native', 'break-ui'] },
 ];
 
 const OUT = '.claude';
@@ -43,7 +46,9 @@ for (const src of SOURCES) {
   const skillDirs = src.skillAtRoot ? [[root, src.skillAtRoot]] : dirs(join(root, 'skills')).map((d) => [join(root, 'skills', d), d]);
   for (const [from, name] of skillDirs) {
     if (!existsSync(join(from, 'SKILL.md'))) continue;
+    if (src.only && !src.only.includes(name)) continue;
     const to = join(OUT, 'skills', name);
+    if (existsSync(to)) { console.warn(`skip duplicate skill ${name} from ${src.name}`); continue; }
     if (src.skillAtRoot) {
       mkdirSync(to, { recursive: true });
       for (const f of files(from).filter((f) => /\.(md|txt)$/i.test(f))) cpSync(join(from, f), join(to, f));

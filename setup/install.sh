@@ -6,7 +6,7 @@ command -v claude >/dev/null || { echo 'Claude Code (claude) is not on PATH.'; e
 command -v node >/dev/null || { echo 'Node.js is required for the MCP servers.'; exit 1; }
 
 claude plugin marketplace add ldebruinlars/ai-website-and-motion
-for p in website-motion gsap-skills impeccable 21st humanizer claude-code-setup agent-skills context7; do claude plugin install "$p@ai-website-and-motion" --scope user; done
+for p in website-motion gsap-skills impeccable 21st humanizer claude-code-setup agent-skills context7 taste-skill emil-kowalski; do claude plugin install "$p@ai-website-and-motion" --scope user; done
 
 # Graphify ships as a Python CLI that installs its own skill.
 if command -v uv >/dev/null; then uv tool install graphifyy && graphify install || true

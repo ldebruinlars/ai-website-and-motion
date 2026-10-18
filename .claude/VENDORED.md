@@ -8,9 +8,11 @@ Each skill keeps its original license file. All rights remain with the original 
 |---|---|---|---|
 | website-motion | this repo @ this repo |  | 1 skills |
 | gsap-skills | [source](https://github.com/greensock/gsap-skills) @ aed9cfd | MIT | 8 skills |
-| impeccable | [source](https://github.com/pbakaus/impeccable) @ 1e46f67 | Apache-2.0 | 1 skills, 4 agents |
+| impeccable | [source](https://github.com/pbakaus/impeccable) @ 2f46b7a | Apache-2.0 | 1 skills, 4 agents |
 | humanizer | [source](https://github.com/blader/humanizer) @ 8c307f3 | MIT | 1 skills |
 | agent-skills | [source](https://github.com/addyosmani/agent-skills) @ aeac41d | MIT | 25 skills, 4 agents, 9 commands |
 | claude-code-setup | [source](https://github.com/anthropics/claude-plugins-official) @ ea10b21 | Apache-2.0 | 1 skills |
 | 21st | [source](https://github.com/21st-dev/magic-mcp) @ 6b5299e | ISC | 1 skills |
+| taste-skill | [source](https://github.com/Leonxlnx/taste-skill) @ f624f37 | MIT | 14 skills |
+| emil-kowalski | [source](https://github.com/emilkowalski/skills) @ 2d22863 | MIT | 12 skills |
 | graphify | [source](https://github.com/Graphify-Labs/graphify) @ pip graphifyy | MIT | 1 skills |

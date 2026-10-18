@@ -5,7 +5,7 @@ if (-not (Get-Command claude -ErrorAction SilentlyContinue)) { throw 'Claude Cod
 if (-not (Get-Command node -ErrorAction SilentlyContinue)) { throw 'Node.js is required for the MCP servers.' }
 
 claude plugin marketplace add ldebruinlars/ai-website-and-motion
-foreach ($p in 'website-motion','gsap-skills','impeccable','21st','humanizer','claude-code-setup','agent-skills','context7') { claude plugin install "$p@ai-website-and-motion" --scope user }
+foreach ($p in 'website-motion','gsap-skills','impeccable','21st','humanizer','claude-code-setup','agent-skills','context7','taste-skill','emil-kowalski') { claude plugin install "$p@ai-website-and-motion" --scope user }
 
 # Graphify ships as a Python CLI that installs its own skill.
 if (Get-Command py -ErrorAction SilentlyContinue) {
