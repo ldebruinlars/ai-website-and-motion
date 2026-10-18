@@ -13,29 +13,33 @@ One client provider, mounted once in the root layout.
 ```tsx
 // components/smooth-scroll.tsx
 'use client';
-import { ReactLenis, type LenisRef } from 'lenis/react';
-import { useEffect, useRef } from 'react';
+import { ReactLenis, useLenis } from 'lenis/react';
+import { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import 'lenis/dist/lenis.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function SmoothScroll({ children }: { children: React.ReactNode }) {
-  const lenisRef = useRef<LenisRef>(null);
+// Lives inside <ReactLenis>, so useLenis re-renders it once the instance exists.
+function GsapBridge() {
+  const lenis = useLenis(ScrollTrigger.update);
 
   useEffect(() => {
-    const lenis = lenisRef.current?.lenis;
     if (!lenis) return;
-    lenis.on('scroll', ScrollTrigger.update);
     const update = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(update);
     gsap.ticker.lagSmoothing(0);
     return () => gsap.ticker.remove(update);
-  }, []);
+  }, [lenis]);
 
+  return null;
+}
+
+export function SmoothScroll({ children }: { children: React.ReactNode }) {
   return (
-    <ReactLenis root ref={lenisRef} options={{ autoRaf: false, lerp: 0.1, anchors: true }}>
+    <ReactLenis root options={{ autoRaf: false, lerp: 0.1, anchors: true }}>
+      <GsapBridge />
       {children}
     </ReactLenis>
   );
@@ -47,7 +51,7 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 <body><SmoothScroll>{children}</SmoothScroll></body>
 ```
 
-`autoRaf: false` because GSAP's ticker drives Lenis. If GSAP is not used, drop the effect and set `autoRaf: true`.
+`autoRaf: false` because GSAP's ticker drives Lenis. If GSAP is not used, drop `GsapBridge` and set `autoRaf: true`.
 
 ## Vanilla JS / plain HTML
 
@@ -68,6 +72,7 @@ Without a bundler: `<link rel="stylesheet" href="https://unpkg.com/lenis@1.3.27/
 
 ## Gotchas
 
+- **Don't read the instance from a ref in an effect** (`lenisRef.current?.lenis` in `useEffect`): ReactLenis creates Lenis in its own effect, so the ref is still empty, the ticker never calls `lenis.raf`, and with `autoRaf: false` wheel and trackpad scrolling do nothing. Use `useLenis` in a child, as above.
 - **Reduced motion:** don't start Lenis when `window.matchMedia('(prefers-reduced-motion: reduce)').matches`.
 - **Nested scroll areas** (modals, dropdowns, chat widgets, code blocks): add `data-lenis-prevent` to the element, or the page scrolls instead of it.
 - **Anchor links** only work with `anchors: true`. Use `lenis.scrollTo('#id', { offset: -80 })` for a sticky header.
