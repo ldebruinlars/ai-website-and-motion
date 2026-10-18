@@ -2,7 +2,10 @@
   "mcpServers": {
     "magicui": {
       "command": "npx",
-      "args": ["-y", "@magicuidesign/mcp@2.0.0"]
+      "args": ["-y", "@magicuidesign/mcp@2.0.0"],
+      "env": {
+        "NODE_USE_ENV_PROXY": "1"
+      }
     },
     "shadcn": {
       "command": "npx",
