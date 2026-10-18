@@ -16,6 +16,11 @@ The gap between a generic AI site and an award-winning one is mostly motion and 
 
 The `magicui` and `shadcn` MCP servers that ship with this plugin let you search both libraries and read a component's source before adding it. Use them instead of guessing component names or props.
 
+Companion plugins from the same marketplace, use them when installed:
+- **impeccable**: design taste and anti-patterns. Run `/impeccable teach` once per project to save the brand's design context, and use its critique/audit/polish commands before calling a page done.
+- **21st**: search 10,000+ components and templates on 21st.dev when neither React Bits nor Magic UI has the piece (pricing tables, auth forms, dashboards, footers). Needs `API_KEY_21ST`.
+- **humanizer**: run all website copy (headlines, about text, CTAs) through it so the words don't read as AI-written.
+
 ## Workflow
 
 1. **Read the project first.** Framework (Next.js, Vite, Astro, plain HTML), Tailwind version, TypeScript or JS, existing `components.json`, and where the brand lives (Tailwind theme, CSS variables, logo, fonts). If there is no project, scaffold Next.js + TypeScript + Tailwind (`npx create-next-app@latest`) unless the user wants something else.

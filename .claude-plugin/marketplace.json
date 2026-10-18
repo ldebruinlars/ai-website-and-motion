@@ -16,10 +16,50 @@
       "name": "gsap-skills",
       "description": "Official GSAP skills from GreenSock: core, timelines, ScrollTrigger, plugins, React, performance.",
       "source": {
-        "source": "github",
-        "repo": "greensock/gsap-skills"
+        "source": "url",
+        "url": "https://github.com/greensock/gsap-skills.git"
       },
       "category": "design"
+    },
+    {
+      "name": "impeccable",
+      "description": "Paul Bakaus' design skill: real design taste, anti-pattern detection and commands like /impeccable polish, audit and critique.",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/pbakaus/impeccable.git",
+        "path": "plugin"
+      },
+      "category": "design",
+      "homepage": "https://impeccable.style"
+    },
+    {
+      "name": "21st",
+      "description": "21st.dev MCP: search 10,000+ UI components and templates and pull their code. Needs a free API key in API_KEY_21ST.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/21st-dev/magic-mcp.git"
+      },
+      "category": "design",
+      "homepage": "https://21st.dev/mcp"
+    },
+    {
+      "name": "humanizer",
+      "description": "Rewrites AI-sounding text so it reads like a person (based on Wikipedia's Signs of AI writing).",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/blader/humanizer.git"
+      },
+      "category": "writing"
+    },
+    {
+      "name": "claude-code-setup",
+      "description": "Official Anthropic plugin: scans a codebase and recommends the hooks, skills, MCP servers and subagents it needs.",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "plugins/claude-code-setup"
+      },
+      "category": "productivity"
     }
   ]
 }

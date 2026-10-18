@@ -1,28 +1,24 @@
 # AI website & motion
 
-My Claude toolkit for websites that look and move like big-brand sites. Install once, and every Claude Code chat knows how to do it.
+My Claude toolkit so Claude stops producing generic "AI slop": premium design, real components, smooth motion, human-sounding copy and a project setup that fits. Install it once, and every Claude Code chat can use it.
 
-| Piece | What it gives Claude |
-|---|---|
-| **website-motion** plugin | A skill with my workflow and quality bar, Lenis + GSAP setup, motion recipes per section, and full catalogues of React Bits (218) and Magic UI (78) components. It also bundles the **Magic UI** and **shadcn** MCP servers, so Claude can search both libraries and pull the source of any component. |
-| **gsap-skills** plugin | GreenSock's official GSAP skills: core, timelines, ScrollTrigger, plugins, React, performance. |
+| Plugin | What it gives Claude | Source |
+|---|---|---|
+| **website-motion** | My workflow and quality bar for premium sites: Lenis + GSAP setup, motion recipes per section, catalogues of React Bits (218) and Magic UI (78) components. Bundles the **Magic UI** and **shadcn** MCP servers to search both libraries and pull component source. | this repo |
+| **gsap-skills** | GreenSock's official GSAP skills: core, timelines, ScrollTrigger, plugins, React, performance. | [greensock/gsap-skills](https://github.com/greensock/gsap-skills) |
+| **impeccable** | Design taste from premium references, anti-pattern detection, `/impeccable teach`, `audit`, `critique`, `polish` and more. | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) |
+| **21st** | 21st.dev MCP: 10,000+ professional UI components and templates. **Needs a free API key** (see below). | [21st-dev/magic-mcp](https://github.com/21st-dev/magic-mcp) |
+| **humanizer** | Removes the tell-tale signs of AI writing and matches your own voice. `/humanizer` or "humanize this". | [blader/humanizer](https://github.com/blader/humanizer) |
+| **claude-code-setup** | Official Anthropic plugin: scans a codebase and recommends the hooks, skills, MCP servers and subagents it needs. | [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-code-setup) |
 
-The libraries themselves (GSAP, Lenis, React Bits, Magic UI) are installed **per website project** by Claude when it needs them. Nothing to install globally.
+The third-party plugins are pulled straight from their authors' repos, so updates arrive automatically. The libraries themselves (GSAP, Lenis, React Bits, Magic UI) are installed **per website project** by Claude when it needs them.
 
 ## Install in Claude Code (any computer)
 
-Inside Claude Code:
-
-```
-/plugin marketplace add ldebruinlars/ai-website-and-motion
-/plugin install website-motion@ai-website-and-motion
-/plugin install gsap-skills@ai-website-and-motion
-```
-
-Or from a terminal, run the setup script, which does the same and also raises the MCP startup timeout:
+Run the setup script, which installs all six and sets the MCP startup timeout:
 
 ```powershell
-# Windows
+# Windows (PowerShell)
 irm https://raw.githubusercontent.com/ldebruinlars/ai-website-and-motion/main/setup/install.ps1 | iex
 ```
 
@@ -31,20 +27,44 @@ irm https://raw.githubusercontent.com/ldebruinlars/ai-website-and-motion/main/se
 curl -fsSL https://raw.githubusercontent.com/ldebruinlars/ai-website-and-motion/main/setup/install.sh | bash
 ```
 
-Restart Claude Code afterwards. Needs Node.js 18+.
+Or by hand inside Claude Code:
 
-**Startup timeout:** the shadcn MCP server can take 15 to 25 s to start the first time. If `/mcp` shows it as failed, add `"env": { "MCP_TIMEOUT": "60000" }` to `~/.claude/settings.json` (the setup script does this for you).
+```
+/plugin marketplace add ldebruinlars/ai-website-and-motion
+/plugin install website-motion@ai-website-and-motion
+/plugin install gsap-skills@ai-website-and-motion
+/plugin install impeccable@ai-website-and-motion
+/plugin install 21st@ai-website-and-motion
+/plugin install humanizer@ai-website-and-motion
+/plugin install claude-code-setup@ai-website-and-motion
+```
+
+Restart Claude Code afterwards. Needs Node.js 18+ and git.
+
+### 21st.dev API key
+
+1. Create a free key at [21st.dev/mcp](https://21st.dev/mcp).
+2. Save it as the environment variable `API_KEY_21ST`:
+   - Windows: `[Environment]::SetEnvironmentVariable("API_KEY_21ST", "<your key>", "User")`, then restart Claude.
+   - macOS / Linux: add `export API_KEY_21ST="<your key>"` to `~/.zshrc` or `~/.bashrc`.
+
+Never commit the key to this repo.
+
+### Startup timeout
+
+The shadcn MCP server can take 10 to 25 s to start, longer on the first run. The setup script sets `"env": { "MCP_TIMEOUT": "120000" }` in `~/.claude/settings.json`. Add it yourself if you installed by hand and `/mcp` shows a timeout.
 
 ## Use it
 
-Open your website project in Claude Code and ask, for example:
+Open your project in Claude Code and ask, for example:
 
-- "Make this landing page feel premium. Keep the layout and copy."
-- "Add Lenis smooth scrolling and GSAP scroll reveals to every section."
-- "Add a client logo marquee and a shimmer CTA button in our brand colours."
-- "Rebuild the hero with a React Bits background and animated headline."
+- "Make this landing page feel premium. Keep the layout and copy." (website-motion + impeccable)
+- "Run /impeccable critique on the homepage and fix what it finds."
+- "Find a pricing table on 21st.dev that fits our style and add it."
+- "Humanize the hero text and about page."
+- "Use claude-code-setup to recommend the right automations for this repo."
 
-The skill kicks in on its own. You can also call it directly with `/website-motion:website-motion`.
+Skills switch on by themselves when the request fits. You can also call them directly, e.g. `/website-motion:website-motion`, `/impeccable`, `/humanizer`.
 
 ## Keep it up to date
 
@@ -52,7 +72,7 @@ The skill kicks in on its own. You can also call it directly with `/website-moti
 /plugin marketplace update ai-website-and-motion
 ```
 
-To refresh the component catalogues after the libraries release new components:
+To refresh the React Bits / Magic UI catalogues:
 
 ```bash
 node scripts/update-catalogs.mjs
@@ -61,17 +81,17 @@ git commit -am "Update component catalogues" && git push
 
 ## Claude.ai chats (web, desktop and mobile apps)
 
-Plugins are Claude Code only. In a normal Claude chat you can still use the skill:
+Plugins are Claude Code only. In a normal Claude chat you can still upload the skills:
 
-1. Zip the folder `plugins/website-motion/skills/website-motion` (the zip should contain the `website-motion` folder).
-2. In Claude, go to **Settings → Capabilities → Skills → Upload skill** and pick the zip.
+1. Zip a skill folder so the zip contains the folder itself, for example `plugins/website-motion/skills/website-motion`. Impeccable and Humanizer can be zipped from their own repos the same way.
+2. In Claude go to **Settings → Capabilities → Skills → Upload skill**.
 
-The MCP servers don't run there, since they need a local computer, so Claude works from the catalogues in the skill instead.
+The MCP servers (Magic UI, shadcn, 21st) are not available there: the first two need a local computer, and 21st.dev authenticates with an API-key header that claude.ai connectors may not accept. In those chats Claude works from the skills and catalogues instead.
 
 ## Repo layout
 
 ```
-.claude-plugin/marketplace.json          # makes this repo a plugin marketplace
+.claude-plugin/marketplace.json          # this repo is a plugin marketplace (lists all six)
 plugins/website-motion/
   .claude-plugin/plugin.json
   .mcp.json                              # Magic UI + shadcn MCP servers
@@ -84,4 +104,4 @@ setup/install.ps1, setup/install.sh      # one-shot installers
 
 ## Credits
 
-[Magic UI](https://magicui.design) · [React Bits](https://reactbits.dev) · [GSAP](https://gsap.com) · [Lenis](https://lenis.darkroom.engineering) · [shadcn/ui](https://ui.shadcn.com). Idea from [@jackroberts___](https://www.instagram.com/jackroberts___/).
+[Magic UI](https://magicui.design) · [React Bits](https://reactbits.dev) · [GSAP](https://gsap.com) · [Lenis](https://lenis.darkroom.engineering) · [shadcn/ui](https://ui.shadcn.com) · [Impeccable](https://impeccable.style) · [21st.dev](https://21st.dev) · [Humanizer](https://github.com/blader/humanizer) · [Anthropic](https://github.com/anthropics/claude-plugins-official). Ideas from [@jackroberts___](https://www.instagram.com/jackroberts___/) and Nick Saraev.
