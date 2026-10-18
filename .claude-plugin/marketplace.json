@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "ai-website-and-motion",
-  "description": "Lars de Bruin's toolkit for premium, animated websites with Claude: Magic UI, React Bits, GSAP and Lenis.",
+  "description": "Lars de Bruin's Claude toolkit: premium animated websites (Magic UI, React Bits, GSAP, Lenis), design taste, UI components, human writing and senior-dev coding skills.",
   "owner": {
     "name": "Lars de Bruin"
   },
@@ -60,6 +60,25 @@
         "path": "plugins/claude-code-setup"
       },
       "category": "productivity"
+    },
+    {
+      "name": "agent-skills",
+      "description": "Addy Osmani's production-grade engineering skills for the whole dev cycle: spec, plan, build, verify, review, ship.",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/addyosmani/agent-skills.git"
+      },
+      "category": "development"
+    },
+    {
+      "name": "context7",
+      "description": "Upstash Context7: up-to-date, version-specific docs and code examples for any library, so Claude never codes against outdated APIs.",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/anthropics/claude-plugins-official.git",
+        "path": "external_plugins/context7"
+      },
+      "category": "development"
     }
   ]
 }
